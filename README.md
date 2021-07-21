@@ -1,4 +1,8 @@
 
+<img src = "./Documentation/screen1.png" width="30%"> <img src = "./Documentation/screen2.png" width="30%"> <img src = "./Documentation/screen3.png" width="30%"> <br>
+
+---
+
 ![App Brewery Banner](Documentation/AppBreweryBanner.png)
 
 #  Destini
