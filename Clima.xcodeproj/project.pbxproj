@@ -17,6 +17,7 @@
 		CB1BDF6A26AD557F008D568E /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1BDF6926AD557F008D568E /* WeatherManager.swift */; };
 		CB1BDF6C26AD5772008D568E /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1BDF6B26AD5772008D568E /* WeatherData.swift */; };
 		CB1BDF6E26AD5EFF008D568E /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1BDF6D26AD5EFF008D568E /* WeatherModel.swift */; };
+		CBF8280126B0084D009AA0C4 /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBF8280026B0084D009AA0C4 /* keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		CB1BDF6926AD557F008D568E /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		CB1BDF6B26AD5772008D568E /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
 		CB1BDF6D26AD5EFF008D568E /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		CBF8280026B0084D009AA0C4 /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				ADAA27B9231BBFB300365194 /* Assets.xcassets */,
 				ADAA27BB231BBFB300365194 /* LaunchScreen.storyboard */,
 				ADAA27BE231BBFB300365194 /* Info.plist */,
+				CBF8280026B0084D009AA0C4 /* keys.plist */,
 			);
 			path = Clima;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				ADAA27BD231BBFB300365194 /* LaunchScreen.storyboard in Resources */,
 				ADAA27BA231BBFB300365194 /* Assets.xcassets in Resources */,
 				ADAA27B8231BBFAF00365194 /* Main.storyboard in Resources */,
+				CBF8280126B0084D009AA0C4 /* keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

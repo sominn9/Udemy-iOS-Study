@@ -14,12 +14,28 @@ protocol WeatherManagerDelegate {
 }
 
 struct WeatherManager {
-
-    let weatherURL = "https://api.openweathermap.org/data/2.5/weather?appid={APP_ID}&units=metric"
+    
+    var weatherURL: String {
+        return "https://api.openweathermap.org/data/2.5/weather?appid=\(getApiKey())&units=metric"
+    }
     
     var delegate: WeatherManagerDelegate?
     
     // MARK: - Methods
+    
+    func getApiKey() -> String {
+        guard let filePath = Bundle.main.path(forResource: "keys", ofType: "plist") else {
+            print("Couldn't find file 'keys.plist'")
+            return ""
+        }
+        
+        let plist = NSDictionary(contentsOf: URL(fileURLWithPath: filePath))
+        guard let value = plist?.object(forKey: "API_KEY") as? String else {
+            print("Couldn't find key 'API_KEY in 'keys.plist'")
+            return ""
+        }
+        return value
+    }
     
     func fetchWeather(cityName: String) {
         let urlString = "\(weatherURL)&q=\(cityName)"
