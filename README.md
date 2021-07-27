@@ -1,3 +1,6 @@
+<img src='./Documentation/screen.png' width='30%'>
+
+---
 
 ![App Brewery Banner](Documentation/AppBreweryBanner.png)
 
