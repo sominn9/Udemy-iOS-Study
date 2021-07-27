@@ -1,4 +1,4 @@
-<img src='./Documentation/screen.png' width='30%'>
+<img src='./Documentation/screen.png' width='30%'> <img src='./Documentation/screen2.png' width='30%'>
 
 ---
 
