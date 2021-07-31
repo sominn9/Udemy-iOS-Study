@@ -14,9 +14,9 @@
 		AD0B9FA8230D64B50065EFD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD0B9FA7230D64B50065EFD9 /* Assets.xcassets */; };
 		AD0B9FAB230D64B50065EFD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD0B9FA9230D64B50065EFD9 /* LaunchScreen.storyboard */; };
 		AD64359C2312D0DA00E22B00 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = AD64359B2312D0DA00E22B00 /* README.md */; };
+		CB06569226B5100600F3BAD0 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06569126B5100600F3BAD0 /* BMI.swift */; };
+		CB06569426B5102E00F3BAD0 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB06569326B5102E00F3BAD0 /* CalculatorBrain.swift */; };
 		CB12B1AF26A960A300E468E0 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12B1AE26A960A300E468E0 /* ResultViewController.swift */; };
-		CB12B1B126A976C700E468E0 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB12B1B026A976C700E468E0 /* CalculatorBrain.swift */; };
-		CB3E88F126A983FE00A678A4 /* BMI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3E88F026A983FE00A678A4 /* BMI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +29,9 @@
 		AD0B9FAA230D64B50065EFD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD0B9FAC230D64B50065EFD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD64359B2312D0DA00E22B00 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		CB06569126B5100600F3BAD0 /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMI.swift; sourceTree = "<group>"; };
+		CB06569326B5102E00F3BAD0 /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 		CB12B1AE26A960A300E468E0 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
-		CB12B1B026A976C700E468E0 /* CalculatorBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CalculatorBrain.swift; path = "BMI-Calculator/Controllers/CalculatorBrain.swift"; sourceTree = SOURCE_ROOT; };
-		CB3E88F026A983FE00A678A4 /* BMI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BMI.swift; path = "BMI-Calculator/Controllers/BMI.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,7 +67,7 @@
 			children = (
 				AD0B9F9E230D64B30065EFD9 /* AppDelegate.swift */,
 				AD0B9FA0230D64B30065EFD9 /* SceneDelegate.swift */,
-				AD0B9FB4230D64F70065EFD9 /* Models */,
+				CB06569026B50FF200F3BAD0 /* Model */,
 				AD0B9FB2230D64E70065EFD9 /* Views */,
 				AD0B9FB3230D64F00065EFD9 /* Controllers */,
 				AD0B9FA7230D64B50065EFD9 /* Assets.xcassets */,
@@ -94,13 +94,13 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		AD0B9FB4230D64F70065EFD9 /* Models */ = {
+		CB06569026B50FF200F3BAD0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CB12B1B026A976C700E468E0 /* CalculatorBrain.swift */,
-				CB3E88F026A983FE00A678A4 /* BMI.swift */,
+				CB06569126B5100600F3BAD0 /* BMI.swift */,
+				CB06569326B5102E00F3BAD0 /* CalculatorBrain.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,11 +175,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB06569426B5102E00F3BAD0 /* CalculatorBrain.swift in Sources */,
+				CB06569226B5100600F3BAD0 /* BMI.swift in Sources */,
 				AD0B9FA3230D64B30065EFD9 /* CalculateViewController.swift in Sources */,
 				AD0B9F9F230D64B30065EFD9 /* AppDelegate.swift in Sources */,
 				AD0B9FA1230D64B30065EFD9 /* SceneDelegate.swift in Sources */,
-				CB12B1B126A976C700E468E0 /* CalculatorBrain.swift in Sources */,
-				CB3E88F126A983FE00A678A4 /* BMI.swift in Sources */,
 				CB12B1AF26A960A300E468E0 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
