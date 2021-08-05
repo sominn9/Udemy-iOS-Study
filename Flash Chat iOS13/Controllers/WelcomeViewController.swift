@@ -8,15 +8,22 @@
 
 import UIKit
 
-class WelcomeViewController: UIViewController {
+class WelcomeViewController: UIViewController, UISceneDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titleLabel.text = ""
+        let titleText = "⚡️FlashChat"
+        var charIndex: Double = 0
 
-       
+        for char in titleText {
+            Timer.scheduledTimer(withTimeInterval: 0.1 * charIndex, repeats: false) { timer in
+                self.titleLabel.text?.append(char)
+            }
+            charIndex += 1
+        }
     }
-    
-
 }
