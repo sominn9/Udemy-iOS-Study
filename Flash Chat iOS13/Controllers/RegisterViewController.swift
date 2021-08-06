@@ -23,7 +23,7 @@ class RegisterViewController: UIViewController {
                     self.popUpErrorMessage(error: e)
                 } else {
                     // Navigate to the ChatViewController.
-                    self.performSegue(withIdentifier: "RegisterToChat", sender: self)
+                    self.performSegue(withIdentifier: K.registerSegue, sender: self)
                 }
             }
         }

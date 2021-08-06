@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController, UISceneDelegate {
         super.viewDidLoad()
         
         titleLabel.text = ""
-        let titleText = "⚡️FlashChat"
+        let titleText = K.appName
         var charIndex: Double = 0
 
         for char in titleText {
