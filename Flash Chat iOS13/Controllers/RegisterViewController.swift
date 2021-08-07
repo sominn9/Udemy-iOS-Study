@@ -14,6 +14,13 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor(named: K.BrandColors.lightBlue)
+        navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.blue)
+        navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
     @IBAction func registerPressed(_ sender: UIButton) {
         // When user typed email and password, create an account.
         if let email = emailTextfield.text, let password = passwordTextfield.text {

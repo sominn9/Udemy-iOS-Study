@@ -26,4 +26,12 @@ class WelcomeViewController: UIViewController, UISceneDelegate {
             charIndex += 1
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
 }

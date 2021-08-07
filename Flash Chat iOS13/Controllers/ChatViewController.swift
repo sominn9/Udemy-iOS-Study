@@ -54,6 +54,8 @@ class ChatViewController: UIViewController {
                             
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
                             }
                         }
                     }
@@ -74,7 +76,9 @@ class ChatViewController: UIViewController {
                     print("There was an issue saving data to Firestore, \(e)")
                 } else {
                     print("Successfully saved data.")
-                    self.messageTextfield.text = ""
+                    DispatchQueue.main.async {
+                        self.messageTextfield.text = ""
+                    }
                 }
             }
         }
@@ -100,9 +104,24 @@ extension ChatViewController: UITableViewDataSource {
         return messages.count
     }
     
+    // Called as many times as there are cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let messageCell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageCell
-        messageCell.label.text = messages[indexPath.row].body
-        return messageCell
+        
+        let message = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MessageCell
+        cell.label.text = message.body
+        
+        if  Auth.auth().currentUser?.email == message.sender {
+            cell.leftImageView.isHidden = true
+            cell.rightImageView.isHidden = false
+            cell.label.textColor = UIColor(named: K.BrandColors.lightPurple)
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.purple)
+        } else {
+            cell.leftImageView.isHidden = false
+            cell.rightImageView.isHidden = true
+            cell.label.textColor = UIColor(named: K.BrandColors.purple)
+            cell.messageBubble.backgroundColor = UIColor(named: K.BrandColors.lightPurple)
+        }
+        return cell
     }
 }
