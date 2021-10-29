@@ -11,13 +11,37 @@ import UIKit
 class MemoListTableViewController: UITableViewController {
     
     let itemIdentifier = "list item"
-    let itemArray = ["Find Mike", "Buy egges", "Destory Demos"]
+    var itemArray = ["Find Mike", "Buy egges", "Destory Demos"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemIdentifier)
     }
+    
+    // MARK: - Methods
+    
+    @objc func addButtonPressed() {
+        var textField: UITextField!
+        
+        let alert = UIAlertController(title: "메모 작성하기", message: nil, preferredStyle: .alert)
+        alert.addTextField { alertTextField in
+            alertTextField.placeholder = "메모를 작성하세요"
+            textField = alertTextField
+        }
+        
+        let addAction = UIAlertAction(title: "추가", style: .default) { action in
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+        }
+        let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        
+        alert.addAction(addAction)
+        alert.addAction(cancleAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -40,6 +64,14 @@ class MemoListTableViewController: UITableViewController {
             cell.textLabel!.text = itemArray[indexPath.row]
         }
         return cell
+    }
+    
+    // MARK: - Table view delegate method
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.accessoryType = (cell?.accessoryType == UITableViewCell.AccessoryType.none) ? .checkmark : .none
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
