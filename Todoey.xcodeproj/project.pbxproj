@@ -50,6 +50,8 @@
 		CBCDC31F272C47B300826929 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */,
+				CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -76,8 +78,6 @@
 				CBCDC31E272C47A800826929 /* Extensions */,
 				CBCDC31F272C47B300826929 /* ViewControllers */,
 				EB2BE4F9239524DB00FB933B /* AppDelegate.swift */,
-				EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */,
-				CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */,
 				EB2BE4FF239524DB00FB933B /* Main.storyboard */,
 				EB2BE502239524DC00FB933B /* Assets.xcassets */,
 				EB2BE504239524DC00FB933B /* LaunchScreen.storyboard */,
