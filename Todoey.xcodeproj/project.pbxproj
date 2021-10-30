@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */; };
 		CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */; };
+		CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8145C272D8B41004DC54A /* FolderCell.swift */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+Extensions.swift"; sourceTree = "<group>"; };
+		CBD8145C272D8B41004DC54A /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
 		EB2BE4F6239524DB00FB933B /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE4F9239524DB00FB933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderGridViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		CBD8145B272D8AEA004DC54A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CBD8145C272D8B41004DC54A /* FolderCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EB2BE4ED239524DB00FB933B = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 			children = (
 				CBCDC31E272C47A800826929 /* Extensions */,
 				CBCDC31F272C47B300826929 /* ViewControllers */,
+				CBD8145B272D8AEA004DC54A /* Views */,
 				EB2BE4F9239524DB00FB933B /* AppDelegate.swift */,
 				EB2BE4FF239524DB00FB933B /* Main.storyboard */,
 				EB2BE502239524DC00FB933B /* Assets.xcassets */,
@@ -158,6 +169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */,
+				CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 				CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */,

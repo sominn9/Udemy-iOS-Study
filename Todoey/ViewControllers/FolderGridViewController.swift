@@ -10,8 +10,6 @@ import UIKit
 
 class FolderGridViewController: UICollectionViewController {
     
-    let itemIdentifier = "item cell"
-    
     init() {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, env) in
             return NSCollectionLayoutSection.responsiveGridSection(env: env)
@@ -28,7 +26,7 @@ class FolderGridViewController: UICollectionViewController {
         navigationItem.title = "Todoey"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: itemIdentifier)
+        collectionView.register(FolderCell.self, forCellWithReuseIdentifier: FolderCell.identifier)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -36,8 +34,10 @@ class FolderGridViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: itemIdentifier, for: indexPath)
-        cell.backgroundColor = .blue
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FolderCell.identifier, for: indexPath) as? FolderCell else {
+            fatalError()
+        }
+        cell.configureLabel(text: "\(indexPath.row)")
         return cell
     }
 
