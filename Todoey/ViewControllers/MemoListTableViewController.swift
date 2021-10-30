@@ -11,13 +11,21 @@ import UIKit
 class MemoListTableViewController: UITableViewController {
     
     let itemIdentifier = "list item"
-    var itemArray = ["Find Mike", "Buy egges", "Destory Demos"]
+    var itemArray: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Navigation bar settings
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
         
+        // Tableview settings
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemIdentifier)
+        
+        // Load data
+        if let items = UserDefaults.standard.stringArray(forKey: "memo array") {
+            itemArray = items
+        }
     }
     
     // MARK: - Methods
@@ -32,8 +40,10 @@ class MemoListTableViewController: UITableViewController {
         }
         
         let addAction = UIAlertAction(title: "추가", style: .default) { action in
-            self.itemArray.append(textField.text!)
+            let memo = textField.text!
+            self.itemArray.append(memo)
             self.tableView.reloadData()
+            UserDefaults.standard.set(self.itemArray, forKey: "memo array")
         }
         let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
