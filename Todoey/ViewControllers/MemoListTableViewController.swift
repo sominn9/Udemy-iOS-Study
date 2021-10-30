@@ -11,7 +11,8 @@ import UIKit
 class MemoListTableViewController: UITableViewController {
     
     let itemIdentifier = "list item"
-    var itemArray: [String] = []
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
+    var memoArray: [Memo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,7 @@ class MemoListTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemIdentifier)
         
         // Load data
-        if let items = UserDefaults.standard.stringArray(forKey: "memo array") {
-            itemArray = items
-        }
+        loadData()
     }
     
     // MARK: - Methods
@@ -40,10 +39,10 @@ class MemoListTableViewController: UITableViewController {
         }
         
         let addAction = UIAlertAction(title: "추가", style: .default) { action in
-            let memo = textField.text!
-            self.itemArray.append(memo)
+            let text = textField.text!
+            self.memoArray.append(Memo(content: text, isCheckmarked: false))
             self.tableView.reloadData()
-            UserDefaults.standard.set(self.itemArray, forKey: "memo array")
+            self.saveData()
         }
         let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
         
@@ -52,6 +51,28 @@ class MemoListTableViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    // MARK: Model Manipulate Methods
+    
+    func saveData() {
+        let encoder = PropertyListEncoder()
+        do {
+            let data = try encoder.encode(memoArray)
+            try data.write(to: dataFilePath!)
+        } catch {
+            print("Error encoding memo array")
+        }
+    }
+    
+    func loadData() {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                memoArray = try decoder.decode([Memo].self, from: data)
+            } catch {
+                print("Error decoding memo array")
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -60,19 +81,22 @@ class MemoListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return memoArray.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: itemIdentifier, for: indexPath)
+        let memo = memoArray[indexPath.row]
         
         if #available(iOS 14.0, *) {
             var content = cell.defaultContentConfiguration()
-            content.text = itemArray[indexPath.row]
+            content.text = memoArray[indexPath.row].content
             cell.contentConfiguration = content
         } else {
-            cell.textLabel!.text = itemArray[indexPath.row]
+            cell.textLabel!.text = memoArray[indexPath.row].content
         }
+        
+        cell.accessoryType = memo.isCheckmarked ? .checkmark : .none
         return cell
     }
     
@@ -80,8 +104,12 @@ class MemoListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = (cell?.accessoryType == UITableViewCell.AccessoryType.none) ? .checkmark : .none
+        let memo = memoArray[indexPath.row]
+        
+        cell?.accessoryType = memo.isCheckmarked ? .none : .checkmark
+        memoArray[indexPath.row].isCheckmarked.toggle()
         tableView.deselectRow(at: indexPath, animated: true)
+        self.saveData()
     }
 
 }
