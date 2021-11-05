@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBA2457927356F0A00E73883 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA2457727356F0A00E73883 /* DataModel.xcdatamodeld */; };
 		CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */; };
 		CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */; };
 		CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8145C272D8B41004DC54A /* FolderCell.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CBA2457827356F0A00E73883 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+Extensions.swift"; sourceTree = "<group>"; };
 		CBD8145C272D8B41004DC54A /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				CBD8145F272D952B004DC54A /* Memo.swift */,
+				CBA2457727356F0A00E73883 /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */,
 				CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */,
+				CBA2457927356F0A00E73883 /* DataModel.xcdatamodeld in Sources */,
 				CBD81460272D952B004DC54A /* Memo.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 				CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */,
@@ -384,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CBA2457727356F0A00E73883 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CBA2457827356F0A00E73883 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = CBA2457827356F0A00E73883 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EB2BE4EE239524DB00FB933B /* Project object */;
 }
