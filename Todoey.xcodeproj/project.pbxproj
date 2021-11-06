@@ -11,7 +11,6 @@
 		CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */; };
 		CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */; };
 		CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8145C272D8B41004DC54A /* FolderCell.swift */; };
-		CBD81460272D952B004DC54A /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD8145F272D952B004DC54A /* Memo.swift */; };
 		EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4F9239524DB00FB933B /* AppDelegate.swift */; };
 		EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */; };
 		EB2BE501239524DB00FB933B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB2BE4FF239524DB00FB933B /* Main.storyboard */; };
@@ -24,7 +23,6 @@
 		CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+Extensions.swift"; sourceTree = "<group>"; };
 		CBD8145C272D8B41004DC54A /* FolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderCell.swift; sourceTree = "<group>"; };
-		CBD8145F272D952B004DC54A /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		EB2BE4F6239524DB00FB933B /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB2BE4F9239524DB00FB933B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB2BE4FD239524DB00FB933B /* FolderGridViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderGridViewController.swift; sourceTree = "<group>"; };
@@ -73,7 +71,6 @@
 		CBD8145E272D936C004DC54A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CBD8145F272D952B004DC54A /* Memo.swift */,
 				CBA2457727356F0A00E73883 /* DataModel.xcdatamodeld */,
 			);
 			path = Models;
@@ -186,7 +183,6 @@
 				CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */,
 				CBA2457927356F0A00E73883 /* DataModel.xcdatamodeld in Sources */,
-				CBD81460272D952B004DC54A /* Memo.swift in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
 				CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */,
 			);

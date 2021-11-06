@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class MemoListTableViewController: UITableViewController {
     
     let itemIdentifier = "list item"
-    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("items.plist")
-    var memoArray: [Memo] = []
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var memoArray = [Memo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +41,12 @@ class MemoListTableViewController: UITableViewController {
         }
         
         let addAction = UIAlertAction(title: "추가", style: .default) { action in
-            let text = textField.text!
-            self.memoArray.append(Memo(content: text, isCheckmarked: false))
-            self.tableView.reloadData()
+                        
+            let newMemo = Memo(context: self.context)
+            newMemo.content = textField.text!
+            newMemo.isCheckmarked = false
+            self.memoArray.append(newMemo)
+            
             self.saveData()
         }
         let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
@@ -54,23 +59,20 @@ class MemoListTableViewController: UITableViewController {
     // MARK: Model Manipulate Methods
     
     func saveData() {
-        let encoder = PropertyListEncoder()
         do {
-            let data = try encoder.encode(memoArray)
-            try data.write(to: dataFilePath!)
+            try context.save()
         } catch {
-            print("Error encoding memo array")
+            print(error)
         }
+        self.tableView.reloadData()
     }
     
     func loadData() {
-        if let data = try? Data(contentsOf: dataFilePath!) {
-            let decoder = PropertyListDecoder()
-            do {
-                memoArray = try decoder.decode([Memo].self, from: data)
-            } catch {
-                print("Error decoding memo array")
-            }
+        let request: NSFetchRequest<Memo> = Memo.fetchRequest()
+        do {
+            memoArray = try context.fetch(request)
+        } catch {
+            print(error)
         }
     }
 
@@ -103,10 +105,6 @@ class MemoListTableViewController: UITableViewController {
     // MARK: - Table view delegate method
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        let memo = memoArray[indexPath.row]
-        
-        cell?.accessoryType = memo.isCheckmarked ? .none : .checkmark
         memoArray[indexPath.row].isCheckmarked.toggle()
         tableView.deselectRow(at: indexPath, animated: true)
         self.saveData()
