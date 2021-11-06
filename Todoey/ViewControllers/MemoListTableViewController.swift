@@ -16,14 +16,26 @@ class MemoListTableViewController: UITableViewController {
     
     var memoArray = [Memo]()
     
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.barStyle = .default
+        searchBar.sizeToFit()
+        return searchBar
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Navigation bar settings
+        navigationItem.title = "메모"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
+
+        // Search bar settings
+        searchBar.delegate = self
         
         // Tableview settings
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemIdentifier)
+        tableView.tableHeaderView = searchBar
         
         // Load data
         loadData()
@@ -32,6 +44,7 @@ class MemoListTableViewController: UITableViewController {
     // MARK: - Methods
     
     @objc func addButtonPressed() {
+        
         var textField: UITextField!
         
         let alert = UIAlertController(title: "메모 작성하기", message: nil, preferredStyle: .alert)
@@ -64,16 +77,16 @@ class MemoListTableViewController: UITableViewController {
         } catch {
             print(error)
         }
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
-    func loadData() {
-        let request: NSFetchRequest<Memo> = Memo.fetchRequest()
+    func loadData(with request: NSFetchRequest<Memo> = Memo.fetchRequest()) {
         do {
             memoArray = try context.fetch(request)
         } catch {
             print(error)
         }
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -87,6 +100,7 @@ class MemoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: itemIdentifier, for: indexPath)
         let memo = memoArray[indexPath.row]
         
@@ -110,4 +124,21 @@ class MemoListTableViewController: UITableViewController {
         self.saveData()
     }
 
+}
+
+// MARK: - Search bar method
+
+extension MemoListTableViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        let request: NSFetchRequest<Memo> = Memo.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "content CONTAINS[cd] %@", searchBar.text!)
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "content", ascending: true)]
+        
+        loadData(with: request)
+    }
+    
 }
