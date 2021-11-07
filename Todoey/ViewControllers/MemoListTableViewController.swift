@@ -131,14 +131,26 @@ class MemoListTableViewController: UITableViewController {
 extension MemoListTableViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        let request: NSFetchRequest<Memo> = Memo.fetchRequest()
-        
-        request.predicate = NSPredicate(format: "content CONTAINS[cd] %@", searchBar.text!)
-        
-        request.sortDescriptors = [NSSortDescriptor(key: "content", ascending: true)]
-        
-        loadData(with: request)
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.count == 0 {
+            loadData()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        } else {
+            let request: NSFetchRequest<Memo> = Memo.fetchRequest()
+            
+            request.predicate = NSPredicate(format: "content CONTAINS[cd] %@", searchText)
+            
+            request.sortDescriptors = [NSSortDescriptor(key: "content", ascending: true)]
+            
+            loadData(with: request)
+        }
     }
     
 }
