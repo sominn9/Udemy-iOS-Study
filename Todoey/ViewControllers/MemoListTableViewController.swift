@@ -16,6 +16,12 @@ class MemoListTableViewController: UITableViewController {
     
     var memoArray = [Memo]()
     
+    var selectedFolder: Folder! {
+        didSet {
+            loadData()
+        }
+    }
+    
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.barStyle = .default
@@ -29,7 +35,7 @@ class MemoListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Navigation bar settings
-        navigationItem.title = "Memo"
+        navigationItem.title = selectedFolder.name
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
 
         // Search bar settings
@@ -38,9 +44,6 @@ class MemoListTableViewController: UITableViewController {
         // Tableview settings
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: itemIdentifier)
         tableView.tableHeaderView = searchBar
-        
-        // Load data
-        loadData()
     }
     
     @objc func addButtonPressed() {
@@ -53,10 +56,11 @@ class MemoListTableViewController: UITableViewController {
             textField = alertTextField
         }
         
-        let addAction = UIAlertAction(title: "Add", style: .default) { action in
+        let addAction = UIAlertAction(title: "Add", style: .default) { [unowned self] action in
             let newMemo = Memo(context: self.context)
             newMemo.content = textField.text!
             newMemo.isCheckmarked = false
+            newMemo.parentFolder = self.selectedFolder
             self.memoArray.append(newMemo)
             
             self.saveData()
@@ -79,7 +83,17 @@ class MemoListTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-    func loadData(with request: NSFetchRequest<Memo> = Memo.fetchRequest()) {
+    func loadData(with request: NSFetchRequest<Memo> = Memo.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let folderPredicate = NSPredicate(format: "parentFolder.name MATCHES %@", selectedFolder.name!)
+        
+        if let additionalPredicate = predicate {
+            let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [folderPredicate, additionalPredicate])
+            request.predicate = compoundPredicate
+        } else {
+            request.predicate = folderPredicate
+        }
+        
         do {
             memoArray = try context.fetch(request)
         } catch {
@@ -143,12 +157,10 @@ extension MemoListTableViewController: UISearchBarDelegate {
             }
         } else {
             let request: NSFetchRequest<Memo> = Memo.fetchRequest()
-            
-            request.predicate = NSPredicate(format: "content CONTAINS[cd] %@", searchText)
-            
             request.sortDescriptors = [NSSortDescriptor(key: "content", ascending: true)]
             
-            loadData(with: request)
+            let searchPredicate = NSPredicate(format: "content CONTAINS[cd] %@", searchText)
+            loadData(with: request, predicate: searchPredicate)
         }
     }
     
