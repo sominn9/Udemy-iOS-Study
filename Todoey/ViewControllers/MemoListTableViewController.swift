@@ -23,11 +23,13 @@ class MemoListTableViewController: UITableViewController {
         return searchBar
     }()
     
+    // MARK: - Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Navigation bar settings
-        navigationItem.title = "메모"
+        navigationItem.title = "Memo"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonPressed))
 
         // Search bar settings
@@ -41,20 +43,17 @@ class MemoListTableViewController: UITableViewController {
         loadData()
     }
     
-    // MARK: - Methods
-    
     @objc func addButtonPressed() {
         
         var textField: UITextField!
         
-        let alert = UIAlertController(title: "메모 작성하기", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add New Memo", message: nil, preferredStyle: .alert)
         alert.addTextField { alertTextField in
-            alertTextField.placeholder = "메모를 작성하세요"
+            alertTextField.placeholder = "Memo"
             textField = alertTextField
         }
         
-        let addAction = UIAlertAction(title: "추가", style: .default) { action in
-                        
+        let addAction = UIAlertAction(title: "Add", style: .default) { action in
             let newMemo = Memo(context: self.context)
             newMemo.content = textField.text!
             newMemo.isCheckmarked = false
@@ -62,10 +61,10 @@ class MemoListTableViewController: UITableViewController {
             
             self.saveData()
         }
-        let cancleAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alert.addAction(addAction)
-        alert.addAction(cancleAction)
+        alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
     
