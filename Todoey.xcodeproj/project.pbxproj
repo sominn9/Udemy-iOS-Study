@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB68383D273C0DA9001AE2E4 /* FloatingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB68383C273C0DA9001AE2E4 /* FloatingButton.swift */; };
 		CBA2457927356F0A00E73883 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CBA2457727356F0A00E73883 /* DataModel.xcdatamodeld */; };
 		CBCDC31D272BD45200826929 /* MemoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */; };
 		CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB68383C273C0DA9001AE2E4 /* FloatingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingButton.swift; sourceTree = "<group>"; };
 		CBA2457827356F0A00E73883 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		CBCDC31C272BD45200826929 /* MemoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoListTableViewController.swift; sourceTree = "<group>"; };
 		CBCDC320272C483100826929 /* NSCollectionLayoutSection+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCollectionLayoutSection+Extensions.swift"; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				CBD8145C272D8B41004DC54A /* FolderCell.swift */,
+				CB68383C273C0DA9001AE2E4 /* FloatingButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			files = (
 				CBCDC321272C483100826929 /* NSCollectionLayoutSection+Extensions.swift in Sources */,
 				CBD8145D272D8B41004DC54A /* FolderCell.swift in Sources */,
+				CB68383D273C0DA9001AE2E4 /* FloatingButton.swift in Sources */,
 				EB2BE4FE239524DB00FB933B /* FolderGridViewController.swift in Sources */,
 				CBA2457927356F0A00E73883 /* DataModel.xcdatamodeld in Sources */,
 				EB2BE4FA239524DB00FB933B /* AppDelegate.swift in Sources */,
